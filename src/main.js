@@ -4,7 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios';
-
+import Vant from 'vant';
+import 'vant/lib/index.css';
+import './assets/css/bass.css';
+Vue.use(Vant);
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
 /* eslint-disable no-new */

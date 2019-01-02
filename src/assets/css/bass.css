@@ -1,9 +1,37 @@
+html {
+    font-size: 26.66vw;
+    background-color: #F5F5F5
+  }
+  
 .context_box{
     width: 100vw;
     height: 100%;
-    background: #fff;
     position: relative;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.twoFontNow {
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.onFontNow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cenFlex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sbFlex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

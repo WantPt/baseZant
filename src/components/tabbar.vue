@@ -1,19 +1,18 @@
 <template>
   <div class="tabbar">
     <!-- <div v-if="active && active !=0"> -->
-    <van-tabbar v-model="active" active-color="#F7CE46" replace="true" v-if="tabbarShow">
-      <van-tabbar-item
-        :to="item.path"
-        :icon="item.icon"
-        v-for="(item,i) in tabbar"
-        :key="i"
-      >{{item.name}}</van-tabbar-item>
+    <van-tabbar v-model="active" replace="true" v-if="tabbarShow" z-index="99">
+      <van-tabbar-item :to="item.path" v-for="(item,i) in tabbar" :key="i" replace>
+        <span slot-scope="props" :style="{color:props.active ? '#F7CE46' : '#9B9B9B'}" class="f18">{{item.name}}</span>
+        <img slot="icon" slot-scope="props" :src="props.active ? item.actImg : item.img"  class="tabbar_img">
+      </van-tabbar-item>
     </van-tabbar>
   </div>
   <!-- </div> -->
 </template>
 
 <script>
+
 export default {
   props: {
     tabbarArr: {
@@ -27,49 +26,71 @@ export default {
   data() {
     return {
       active: 0,
-      tabbarShow:true,
+      tabbarShow: false,
       tabbar: [
         {
           name: "订单",
           icon: "orders-o",
-          path: "index"
+          path: "index",
+          img: require("@/assets/tabbar_icon6.png"),
+          actImg: require("@/assets/tabbar_icon1.png"),
         },
         {
           name: "账本",
           icon: "balance-list-o",
-          path: "accountBook"
+          path: "accountBook",
+          img: require("@/assets/tabbar_icon2.png"),
+          actImg: require("@/assets/tabbar_icon4.png")
         },
         {
           name: "我的",
           icon: "contact",
-          path: "my"
+          path: "my",
+          img: require("@/assets/tabbar_icon3.png"),
+          actImg: require("@/assets/tabbar_icon5.png")
         }
       ]
     };
   },
-  methods: {},
-  watch: {
-    $route(to, from) {
+  methods: {
+    // 判断是否要出现选框
+    showHideFlag(name) {
       let active = null;
       let tabbarShow = false;
       for (let item of this.tabbarArr) {
-        if (item == to.name) {
+        if (item == name) {
           tabbarShow = true;
         }
       }
       this.tabbarShow = tabbarShow;
       if (tabbarShow) {
         this.tabbar.map((item, i) => {
-          if (item.path == to.name) {
+          if (item.path == name) {
             active = i;
           }
         });
         this.active = active;
       }
     }
+  },
+  watch: {
+    $route(to, from) {
+      this.showHideFlag(to.name);
+    }
   }
 };
 </script>
 
 <style lang="less" scoped>
+.van-tabbar{
+  height: 0.5rem;
+  line-height: .5rem;
+  
+}
+.f18{
+  font-size: .14rem;  
+}
+.tabbar_img{
+  height: 0.18rem;
+}
 </style>

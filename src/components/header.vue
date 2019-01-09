@@ -13,13 +13,19 @@ export default {
     title: {
       type: String,
       default: ""
+    },
+    leftArrow:{
+      type: Boolean,
+      default: false
+    },
+    goPath:{
+      type: [String,Number],
+      default: -1
     }
   },
   name: "headerBox",
   data() {
     return {
-      leftArrow: true,
-      goPath: false
     };
   },
   methods: {
@@ -29,12 +35,6 @@ export default {
       } else if (this.goPath && typeof this.goPath == "number") {
         this.$router.go(this.goPath);
       }
-    }
-  },
-  watch: {
-    $route(to, from) {
-      this.goPath = to.meta.goPath;
-      this.leftArrow = !to.meta.goPath ? false : true;
     }
   },
 };

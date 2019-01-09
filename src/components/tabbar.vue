@@ -1,7 +1,7 @@
 <template>
   <div class="tabbar">
     <!-- <div v-if="active && active !=0"> -->
-    <van-tabbar v-model="active" replace="true" v-if="tabbarShow" z-index="99">
+    <van-tabbar v-model="active" replace="true" v-if="tabbarShow" :z-index="99">
       <van-tabbar-item :to="item.path" v-for="(item,i) in tabbar" :key="i" replace>
         <span slot-scope="props" :style="{color:props.active ? '#F7CE46' : '#9B9B9B'}" class="f18">{{item.name}}</span>
         <img slot="icon" slot-scope="props" :src="props.active ? item.actImg : item.img"  class="tabbar_img">

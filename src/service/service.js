@@ -1,7 +1,7 @@
 // import Vue from 'vue'
 import axios from 'axios'
 import router from '../router';
-import { Toast } from 'vant';
+import { Toast, Notify } from 'vant';
 //  设置默认请求头
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -21,6 +21,7 @@ axios.interceptors.request.use(
         return config
     },
     error => {
+        Toast.clear();
         return Promise.reject(error)
     }
 )
@@ -29,8 +30,17 @@ axios.interceptors.response.use((data) => {
     if (data.headers['customize-token']) {
         localStorage.setItem('customize-token', data.headers['customize-token'])
     }
-    return data
+    if (code == 200) {
+        return data
+    } else {
+        if (!data.data) {
+            Notify('未知错误');
+            return
+        }
+        Notify(data.data.msg);
+    }
 }, error => {
+    Toast.clear();
     return Promise.reject(error)
 })
 

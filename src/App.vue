@@ -58,70 +58,53 @@ export default {
       } else if (this.goPath && typeof this.goPath == "number") {
         this.$router.go(this.goPath);
       }
-    },
-    stopDrop() {
-        var lastY;//最后一次y坐标点
-        $(document.body).on('touchstart', function(event) {
-            lastY = event.originalEvent.changedTouches[0].clientY;//点击屏幕时记录最后一次Y度坐标。
-        });
-        $(document.body).on('touchmove', function(event) {
-            var y = event.originalEvent.changedTouches[0].clientY;
-            var st = $(this).scrollTop(); //滚动条高度  
-            if (y >= lastY && st <= 10) {//如果滚动条高度小于0，可以理解为到顶了，且是下拉情况下，阻止touchmove事件。
-                lastY = y;
-                event.preventDefault();
-            }
-            lastY = y;
-     
-        });
     }
   },
-  
+
   created() {
-    this.stopDrop();
+    console.log(
+      "%c",
+      "background: url(https://graph.baidu.com/resource/138b2ebb99f890c8b8c7c01543836115.jpg) no-repeat center; background-size:100% 100%;padding-left:150px;padding-bottom: 150px;margin-left:640px;"
+    );
     console.log(
       [
-        "%c                     .::,                  ,    :    .'",
-        "                    ,::::::,                 '    '    ,'",
-        "                   ,:.     :,                 '.   '.   `'",
-        "                   :        : ,:::,            ':   ':    ': ",
-        "                            ::,` `::            :'   :'    :.",
-        "                            .`     ,:            :'   :'    '",
-        "                            `       :             `'   .'",
-        "             `:::::,                :              `,   ,",
-        "            ::,    ,,              `;,...           :    :  :",
-        "           ::,                ,''''''''''''''',          .  `",
-        "          `::              :''''''''''''''''''''':  `    , :",
-        "          ::.           .''''''''''''''''''''''''''''   .  .",
-        "          ::          ,'''''''''''''''''''''''''''''''. '",
-        "          ::        .'''''''''''''''''''''''''''''''''''`",
-        "          ,::      ''''''''''''',             .:''''''''':",
-        "           :::,``:'''''''''':                     `:'''''''",
-        "            `,::''''''''':       .:''''':.            :''''':",
-        "              `'''''''':      :'''',                    `'''''",
-        "             :''''''''     .''''`                          :'''",
-        "           :'''''''.    .''':                                :'':",
-        "           ''''''''     ''':                                   '':",
-        "          ''''''':    :'':                                       `':",
-        "         '''''''`    ''',                                           ::",
-        "        '''''''     '''                                               :",
-        "       '''''''     '''                            想吃--享吃            :",
-        "                                  '''''''''''''''''''''''''''''''''''''",
-        "      '''''''''''''''''''''''''''''''''''''       "
+        "%c                   _ooOoo_",
+        "                  o8888888o",
+        '                  88" . "88',
+        "                  (| -_- |)",
+        "                  O\\  =  /O",
+        "               ____/`---'\\____",
+        "             .'  \\\\|     |//  `.",
+        "            /  \\\\|||  :  |||//  \\",
+        "           /  _||||| -:- |||||-  \\",
+        "           |   | \\\\\\  -  /// |   |",
+        "           | \\_|  ''\\---/''  |   |",
+        "           \\  .-\\__  `-`  ___/-. /",
+        "         ___`. .'  /--.--\\  `. . __",
+        '      ."" \'<  `.___\\_<|>_/___.\'  >\'"".',
+        "     | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |",
+        "     \\  \\ `-.   \\_ __\\ /__ _/   .-` /  /",
+        "======`-.____`-.___\\_____/___.-`____.-'======",
+        "                   `=---='",
+        "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
       ].join("\n"),
       "color: #fad144;"
+    );
+    console.log(
+      "%c     佛祖保佑   T_T    永无BUG",
+      "color: #fa4844;font-size: 16px;font-weight: bold"
     );
   }
 };
 </script>
 
 <style>
-.van-nav-bar{
+.van-nav-bar {
   height: 0.46rem;
-  line-height: .46rem;
-  font-size: .16rem;
+  line-height: 0.46rem;
+  font-size: 0.16rem;
 }
-.header_tit{
-  font-size: .16rem;
+.header_tit {
+  font-size: 0.16rem;
 }
 </style>
